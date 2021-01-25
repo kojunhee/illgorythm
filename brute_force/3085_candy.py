@@ -15,28 +15,48 @@ def MaxNum(a):
 
 n = int(input())
 array = []
+
 for i in range(n):
     string = list(input())
     array.append(string)
-#print(array)
-#print(array[0][1])
 
 firstmax = 1
-secondmax =1
+
+temp=1
+
 for i in range(n):
     for j in range(n-1):
         (array[i][j],array[i][j+1])=(array[i][j+1],array[i][j])
-        temp = MaxNum(array(i))
+        temp = MaxNum(array[i])
         if temp > firstmax:
             firstmax = temp
+        array = list(map(list,zip(*array)))
+        temp = MaxNum(array[j])
+        if temp > firstmax:
+            firstmax = temp
+        temp = MaxNum(array[j+1])
+        if temp > firstmax:
+            firstmax = temp
+        array = list(map(list,zip(*array)))
         (array[i][j+1],array[i][j])=(array[i][j],array[i][j+1])
 
-print(firstmax)
+array = list(map(list,zip(*array)))
 
-'''array = list(map(list,zip(*array)))
+temp=1
 
 for i in range(n):
     for j in range(n-1):
-        (array[j][i],array[j+1][i])=(array[j+1][i],array[j][i])
-        ManNum(array(i))
-        (array[j+1][i],array[j][i])=(array[j][i],array[j+1][i])'''
+        (array[i][j],array[i][j+1])=(array[i][j+1],array[i][j])
+        temp = MaxNum(array[i])
+        if temp > firstmax:
+            firstmax = temp
+        array = list(map(list,zip(*array)))
+        temp = MaxNum(array[j])
+        if temp > firstmax:
+            firstmax = temp
+        temp = MaxNum(array[j+1])
+        if temp > firstmax:
+            firstmax = temp
+        array = list(map(list,zip(*array)))
+        (array[i][j+1],array[i][j])=(array[i][j],array[i][j+1])
+print(firstmax)

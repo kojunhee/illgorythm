@@ -14,6 +14,4 @@ def MaxNum(a):
             chain = 1
     return maxchain
 
-array=[['y','y','y'],['e','j','j']]
-
-print(list(map(list,zip(*array))))
+array=[['y','c','c',]
